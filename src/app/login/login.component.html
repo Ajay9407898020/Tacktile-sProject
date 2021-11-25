@@ -1,0 +1,49 @@
+<div class="card" style="width: 50%; margin: 20px auto;">
+	<div class="card-body">
+		<div style="width : 500px; margin: auto; padding-top: 20px;">
+			<button routerLink="/signup" class="btn btn-success" style="float: right;">SignIn</button>
+			<form class="form-signin" #f="ngForm" (ngSubmit)="onSubmit(f)">
+				<h1 class="h3 mb-3 font-weight-normal">Login Page</h1>
+				<div class="form-group">
+					<label for="inputEmail">Registered Email</label>
+					<input style="padding-bottom: 10px;" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" type="email"
+						id="inputEmail" class="form-control" placeholder="Email address" required autofocus ngModel
+						name="email" #email="ngModel">
+
+					<div class="alert alert-danger" *ngIf="email.errors?.['required'] && email.touched" role="alert">
+						Email Is Required
+					</div>
+
+					<div class="alert alert-danger"
+						*ngIf="!email.valid && email.touched && !email.errors?.['required'] && !email.dirty "
+						role="alert">
+						Please Enter Valid Email
+					</div>
+
+					<label for="inputPassword" style="margin-top: 15px;">Password</label>
+					<input type="password" id="inputPassword" class="form-control" placeholder="Password" required
+						ngModel name="passwd" #password="ngModel">
+
+					<div class="alert alert-danger" *ngIf="password.errors?.['required'] && password.touched"
+						role="alert">
+						Password is Required
+					</div>
+
+					<button class="btn btn-lg btn-primary btn-block" style="margin-top: 15px;"
+						type="submit">Login</button>
+					<div *ngIf="islogIn">
+						<div class="card" style="width: 18rem; margin-top: 15px;">
+							<div class="card-body">
+								<h5 class="card-title">Invalid Account</h5>
+								<p class="card-text">You are not Registered Yet Please <a routerLink="/signup"
+										class="btn btn-danger">Sign in</a></p>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</div>

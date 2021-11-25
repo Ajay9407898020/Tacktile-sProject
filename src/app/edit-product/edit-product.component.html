@@ -1,0 +1,54 @@
+<div style="width : 90%; margin: auto;">
+    <form class="needs-validation" style="margin-top: 25px;" (ngSubmit)="onSubmit(form)" #form=ngForm>
+        <h2 style="text-align: center;">Product List</h2>
+        <div class="row">
+            <input type="hidden" [ngModel]="product?.productId" name="productId">
+            <input type="hidden" [ngModel]="currentUserId" name="added_by_user">
+
+            <div class="col-md-6 mb-3">
+                <label for="productname">Product name</label>
+                <input type="text" class="form-control" id="productname" placeholder="Product Name" value=""
+                    [ngModel]="product?.productName" name="productName" required="">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="unit">Product Unit</label>
+                <input type="text" class="form-control" id="unit" placeholder="Kg..,Lit.."
+                    [ngModel]="product?.productUnit" name="productUnit">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="purchaserate">Purchase Rate</label>
+                <input type="number" class="form-control" id="purchaserate" placeholder="Purchase Rate" value=""
+                    required="" [ngModel]="product?.purchaseRate" name="purchaseRate">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="salerate">Sale Rate</label>
+                <input type="number" class="form-control" id="salerate" placeholder="Sale Rate"
+                    [ngModel]="product?.saleRate" name="saleRate">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="productode">Product Code</label>
+                <input type="text" class="form-control" id="productcode" placeholder="Product Code"
+                    [ngModel]="product?.productCode" name="productCode">
+            </div>
+        </div>
+
+        <input type='date' type="hidden" [value]="product?.currentDate" [ngModel]="product?.currentDate"
+            name="currentDate">
+
+        <hr class="mb-4">
+
+        <!-- <button class="btn btn-primary btn-lg btn-block" type="submit">Sign In</button> -->
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Add Product</button>
+        </div>
+
+    </form>
+
+</div>
+<button mat-button mat-dialog-close>Close</button>

@@ -1,0 +1,89 @@
+<cdk-virtual-scroll-viewport [itemSize]="18 * 7" class="example-viewport">
+    <form (ngSubmit)="f" #f="ngForm" style="width: 700px;">
+
+        <input type="hidden" [ngModel]="uid" name="unique_identifier">
+        <input type="hidden" [ngModel]="currentUserId" name="added_by_user">
+
+        <mat-form-field appearance="fill" class="givingWidth">
+            <label for="firstName">FirstName</label>
+            <input ngModel name="firstName" #firstName="ngModel" appNameValidators required type="text" id="firstName" matInput>
+        </mat-form-field><br>
+
+        <div *ngIf="submitted ">
+            <div *ngIf="firstName.errors?.required" class="alert-color givingWidth">
+                Valid first name is required.
+            </div>
+        </div>
+        <div *ngIf="submitted ">
+            <div *ngIf="firstName.hasError('nameValidator')" class="alert-color givingWidth">
+                User name is Not Valid.
+            </div>
+        </div>
+
+        <mat-form-field appearance="fill" class="givingWidth">
+            <label for="lastName">LastName</label>
+            <input ngModel name="lastName" #lastName="ngModel" required type="text" id="lastName" matInput>
+        </mat-form-field><br>
+
+        <div *ngIf="submitted ">
+            <div *ngIf="lastName.errors?.required" class="alert-color givingWidth">
+                Valid Last name is required.
+            </div>
+        </div>
+
+        <mat-form-field appearance="fill" class="givingWidth">
+            <label for="gender">Gender</label>
+            <mat-select ngModel name="gender" #gender="ngModel" required id="gender">
+                <mat-option *ngFor="let gender of genders" [value]="gender">
+                    {{gender}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field><br>
+
+        <div *ngIf="submitted ">
+            <div *ngIf="gender.errors?.required" class="alert-color givingWidth">
+                Gender is required.
+            </div>
+        </div>
+
+        <mat-form-field appearance="fill" class="givingWidth">
+            <label for="dob">Date of birth</label>
+            <input ngModel name="dob" #dob="ngModel" required type="text" id="dob" matInput>
+        </mat-form-field><br>
+
+        <div *ngIf="submitted ">
+            <div *ngIf="dob.errors?.required" class="alert-color givingWidth">
+                Date of birth is required.
+            </div>
+        </div>
+
+        <mat-form-field appearance="fill" class="givingWidth">
+            <label for="email">Email</label>
+            <input ngModel name="emailId" #email="ngModel" required type="text" id="email" matInput>
+        </mat-form-field><br>
+
+        <div *ngIf="submitted ">
+            <div *ngIf="email.errors?.required" class="alert-color givingWidth">
+                Email is required.
+            </div>
+        </div>
+
+        <mat-form-field appearance="fill" class="givingWidth">
+            <mat-label>Address</mat-label>
+            <input ngModel name="address" type="text" matInput>
+        </mat-form-field><br>
+
+        <!-- <button mat-raised-button color="accent" (click)="onSubmit(f)">Add</button> -->
+
+        <button [disabled]="loading" style="margin-left: 110px;" class="btn btn-primary" (click)="onSubmit(f)"
+            color="accent">
+            Add
+        </button>
+
+        <button style="float: right; margin-right: 110px;" mat-dialog-close class="btn btn-primary"
+            (click)="onSubmit(f)" color="accent">
+            Close
+        </button>
+
+    </form>
+</cdk-virtual-scroll-viewport>

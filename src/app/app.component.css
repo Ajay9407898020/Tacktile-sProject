@@ -1,0 +1,10 @@
+/* footer {
+  clear: both;
+  position: relative;
+  height: 200px;
+  margin-top: -200px;
+} */
+
+.swal2-height-auto {
+	height: 100vh !important;
+}

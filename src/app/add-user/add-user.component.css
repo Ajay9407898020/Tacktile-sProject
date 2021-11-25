@@ -1,0 +1,17 @@
+.givingWidth{
+    width: 70%;
+    margin-left: 110px;
+}
+
+.alert-color{
+    color: red;
+  }
+
+  .example-viewport {
+    height: 800px;
+    width: 800px;
+  }
+  
+  .example-item {
+    height: 500px;
+  }

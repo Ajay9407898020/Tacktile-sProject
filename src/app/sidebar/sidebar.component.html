@@ -1,0 +1,14 @@
+<mat-sidenav-container>
+	<mat-sidenav opened mode="side">
+		<mat-nav-list #sidenav>
+			<a matTooltip="navigate to Home" mat-list-item routerLink="/dashboard/home">Home</a>
+			<a matTooltip="navigate to User" mat-list-item routerLink="/dashboard/user">User</a>
+			<a matTooltip="navigate to Contact" mat-list-item routerLink="/dashboard/products">Products</a>
+		</mat-nav-list>
+	</mat-sidenav>
+	<mat-sidenav-content>
+		<ng-content></ng-content>
+		<footer class="blockquote-footer">© 2021 Tacktile System <cite title="Source Title">Angular demo project with Angular Material</cite>
+		</footer>
+	</mat-sidenav-content>
+</mat-sidenav-container>

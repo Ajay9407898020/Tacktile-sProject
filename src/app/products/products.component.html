@@ -1,0 +1,45 @@
+<button mat-raised-button color="warn" class="mb-4" (click)="openAddDialog()">Add Product</button>
+<button mat-raised-button style="float: right;" color="warn" class="mb-4" (click)="deleterProduct()">
+    Delete
+</button>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col"> <input type="checkbox" (change)="selectAllOptions()" [checked]="isSelectOptionsChecked">
+            </th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Product Unit</th>
+            <th scope="col">Product Rate</th>
+            <th scope="col">Sale Rate</th>
+            <th scope="col">Product Code</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of filteredProducts">
+            <td>
+                <input id="accept" type="checkbox" value="Delete" [checked]="isSelected(product.productId)"
+                    (change)="onSelectProduct($event ,product.productId)">
+            </td>
+            <td>{{product.productName}}</td>
+            <td>{{product.productUnit}}</td>
+            <td>{{product.saleRate}}</td>
+            <td>{{product.purchaseRate}}</td>
+            <td>{{product.productCode}}</td>
+            <td>
+
+                <mat-menu #appMenu="matMenu" Position="above">
+                    <button mat-menu-item (click)="openViewDialog(product.productId)">View</button>
+                    <button mat-menu-item (click)="openEditDialog(product.productId)">Edit</button>
+                    <button mat-menu-item (click)="onDeleteProduct(product.productId)">Delete</button>
+                </mat-menu>
+
+                <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                    <mat-icon>more_revert</mat-icon>
+                </button>
+
+            </td>
+        </tr>
+    </tbody>
+</table>

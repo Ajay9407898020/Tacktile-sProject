@@ -1,0 +1,110 @@
+<div class="card" style="width: 50%; margin: auto;">
+	<div class="card-body">
+		<div style="width : 500px; margin: auto;">
+			<button class="btn btn-success" routerLink="/login" style="float: right;">Login</button>
+			<form class="needs-validation" [formGroup]="profileForm" (ngSubmit)="onSubmit()" style="margin-top: 25px;">
+				<h2 style="text-align: center;">Register Yourself</h2>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="firstName">First name</label>
+						<input type="text" formControlName="firstName" class="form-control" id="firstName"
+							placeholder="First Name" value="" required="">
+						<div *ngIf="submitted ">
+							<div *ngIf="firstName?.hasError('required')" class="alert-color">
+								Valid first name is required.
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="lastName">Last name</label>
+						<input formControlName="lastName" type="text" class="form-control" id="lastName"
+							placeholder="Last Name">
+
+						<div *ngIf="submitted ">
+							<div *ngIf="lastName?.hasError('required')" class="alert-color">
+								Valid last name is required.
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="mb-3">
+					<label for="username">Email</label>
+					<div class="input-group">
+						<input style="width: 100%;" formControlName="email" type="email" class="form-control" id="email"
+							placeholder="Email" required="">
+						<div *ngIf="submitted ">
+							<div *ngIf="email?.hasError('required')" class="alert-color">
+								<p>Your Email is required.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="mb-3">
+					<label for="birthdate">Date Of Birth</label><br>
+					<mat-form-field appearance="fill">
+						<mat-label></mat-label>
+						<input matInput formControlName="birthDate" [matDatepicker]="picker">
+						<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+						<mat-datepicker #picker></mat-datepicker>
+					</mat-form-field>
+
+					<div *ngIf="submitted ">
+						<div *ngIf="birthDate?.hasError('required') || !birthDate?.valid" class="alert-color">
+							Your Birth Date is Required
+						</div>
+					</div>
+				</div>
+
+				<div class="mb-3">
+					<label for="mobnumber">Mobile Number</label>
+					<div class="input-group">
+						<input style="width: 100%;" formControlName="number" type="text" class="form-control"
+							id="mobnumber" minlength="10" placeholder="Mobile Number" required="">
+
+						<div *ngIf="submitted ">
+							<div *ngIf="number?.hasError('required')" class="alert-color">
+								Your Mobile Number is required
+							</div>
+
+							<div *ngIf="number?.touched && 
+                    number?.hasError('minlength')" class="alert-color">
+								Please Enter Minimum 10 Digit Number
+							</div>
+
+							<div *ngIf="number?.touched && number?.hasError('maxlength')" class="alert-color">
+								Please Enter Maximum 10 Digit Number
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="mb-3">
+					<label for="passwd">Password</label>
+					<div class="input-group">
+						<input style="width: 100%;" formControlName="passwd" type="password" class="form-control"
+							id="passwd" placeholder="Password" required="">
+
+						<div *ngIf="submitted ">
+							<div *ngIf="passwd?.hasError('required')" class="alert-color">
+								Your Password is required.
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="mb-4">
+
+				<!-- <button class="btn btn-primary btn-lg btn-block" type="submit">Sign In</button> -->
+				<div class="form-group">
+					<button [disabled]="loading" class="btn btn-primary">
+						<span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+						Register
+					</button>
+				</div>
+
+			</form>
+
+		</div>
+	</div>
+</div>

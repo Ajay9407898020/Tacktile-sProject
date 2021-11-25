@@ -1,0 +1,83 @@
+<div style="width : 90%; margin: auto;">
+    <form class="needs-validation" style="margin-top: 25px;" (ngSubmit)="onSubmit(form)" #form=ngForm>
+        <h2 style="text-align: center;">Add Product</h2>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+
+                <input type="hidden" [ngModel]="productId" name="productId">
+
+                <input type="hidden" [ngModel]="currentUserId" name="added_by_user">
+                <label for="productname">Product Name</label>
+                <input type="text" class="form-control" id="productname" placeholder="Product Name" value="" ngModel appNameValidators name="productName" #productName="ngModel" required="">
+
+                <div *ngIf="submitted ">
+                    <div *ngIf="productName.errors?.required" class="alert-color givingWidth">
+                        Product name is required.
+                    </div>
+                </div>
+
+                <div *ngIf="submitted ">
+                    <div *ngIf="productName.hasError('nameValidator')" class="alert-color givingWidth">
+                        Product name is Not Valid.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="unit">Product Unit</label>
+                <input type="text" class="form-control" id="unit" placeholder="Kg..,Lit.." ngModel name="productUnit" #productUnit="ngModel" required>
+                <div *ngIf="submitted ">
+                    <div *ngIf="productUnit.errors?.required" class="alert-color givingWidth">
+                        Product Unit is required.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="purchaserate">Purchase Rate</label>
+                <input type="number" class="form-control" id="purchaserate" placeholder="Purchase Rate" value=""
+                    required ngModel name="purchaseRate" #purchaseRate="ngModel">
+                    <div *ngIf="submitted ">
+                        <div *ngIf="purchaseRate.errors?.required" class="alert-color givingWidth">
+                            Purchase Rate is required.
+                        </div>
+                    </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="salerate">Sale Rate</label>
+                <input type="number" required class="form-control" id="salerate" placeholder="Sale Rate" ngModel name="saleRate" #saleRate="ngModel">
+                <div *ngIf="submitted ">
+                    <div *ngIf="saleRate.errors?.required" class="alert-color givingWidth">
+                        Sale rate is required.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="productode">Product Code</label>
+                <input type="text" required class="form-control" id="productcode" placeholder="Product Code" ngModel
+                    name="productCode" #productCode="ngModel">
+                    <div *ngIf="submitted ">
+                        <div *ngIf="productCode.errors?.required" class="alert-color givingWidth">
+                            Product Unit is required.
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+        <input type='date' type="hidden" [value]="currentDate" [ngModel]="currentDate" name="currentDate">
+
+        <hr class="mb-4">
+
+        <!-- <button class="btn btn-primary btn-lg btn-block" type="submit">Sign In</button> -->
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Add Product</button>
+            <button mat-raised-button mat-dialog-close style="float: right;">Close</button>
+        </div>
+
+    </form>
+
+</div>
